@@ -1,0 +1,49 @@
+{
+  "timestamp": "2026-08-21T01:48:33.553675",
+  "files_scanned": 4,
+  "total_findings": 6,
+  "findings": [
+    {
+      "type": "TODO",
+      "priority": "LOW",
+      "line": 7,
+      "description": "Add input validation",
+      "file": "C:\\Users\\Hp 250 Notebook G5\\Desktop\\loop-engineering\\project-8-loop-engineering\\sample_module.py"
+    },
+    {
+      "type": "FIXME",
+      "priority": "HIGH",
+      "line": 10,
+      "description": "Handle None values",
+      "file": "C:\\Users\\Hp 250 Notebook G5\\Desktop\\loop-engineering\\project-8-loop-engineering\\sample_module.py"
+    },
+    {
+      "type": "TODO",
+      "priority": "LOW",
+      "line": 15,
+      "description": "Add error handling",
+      "file": "C:\\Users\\Hp 250 Notebook G5\\Desktop\\loop-engineering\\project-8-loop-engineering\\sample_module.py"
+    },
+    {
+      "type": "HACK",
+      "priority": "HIGH",
+      "line": 20,
+      "description": "Hardcoded path for now",
+      "file": "C:\\Users\\Hp 250 Notebook G5\\Desktop\\loop-engineering\\project-8-loop-engineering\\sample_module.py"
+    },
+    {
+      "type": "TODO",
+      "priority": "LOW",
+      "line": 22,
+      "description": "Make configurable",
+      "file": "C:\\Users\\Hp 250 Notebook G5\\Desktop\\loop-engineering\\project-8-loop-engineering\\sample_module.py"
+    },
+    {
+      "type": "XXX",
+      "priority": "MEDIUM",
+      "line": 27,
+      "description": "This function needs refactoring",
+      "file": "C:\\Users\\Hp 250 Notebook G5\\Desktop\\loop-engineering\\project-8-loop-engineering\\sample_module.py"
+    }
+  ]
+}

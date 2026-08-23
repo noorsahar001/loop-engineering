@@ -1,0 +1,20 @@
+name: TODO Audit
+description: Scan Python files for TODO/FIXME/HACK/XXX comments and summarize by priority
+
+steps:
+  - name: Read source files
+    description: Load all .py files, parse line-by-line for comment markers
+
+  - name: Categorize findings
+    description: Tag each finding as TODO/FIXME/HACK/XXX with priority level
+
+  - name: Generate report
+    description: Create summary grouped by priority (HIGH/MEDIUM/LOW) and file location
+
+  - name: Save results
+    description: Write audit_findings.json for programmatic access
+
+tags:
+  - code-quality
+  - maintenance
+  - automation

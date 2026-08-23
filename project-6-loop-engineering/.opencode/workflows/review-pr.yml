@@ -1,0 +1,33 @@
+# OpenCode Review PR Workflow
+# Event: pull_request types [opened, synchronize]
+# This workflow is triggered by GitHub webhook events
+
+name: OpenCode PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: anomalyco/opencode/github@latest
+        with:
+          model: anthropic/claude-sonnet-5
+          prompt: |
+            Review this pull request carefully.
+
+            1. Look for bugs, logic errors, or edge cases
+            2. Check for off-by-one errors
+            3. Check for missing validation
+            4. Look for type mismatches
+            5. Run the tests if present
+
+            If you find issues, comment on the PR with:
+            - Issue description
+            - Why it's a problem
+            - Suggested fix
+
+            If code looks good, comment: "Looks good to me!"

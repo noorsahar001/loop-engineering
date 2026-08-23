@@ -1,0 +1,3 @@
+candidate-1: division_by_zero
+candidate-2: off_by_one_error
+candidate-3: missing_validation
