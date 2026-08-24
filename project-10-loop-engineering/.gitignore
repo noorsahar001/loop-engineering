@@ -1,0 +1,6 @@
+# Secrets never travel with Git — they live in the environment (A2)
+.env
+
+# Python noise
+__pycache__/
+*.pyc
