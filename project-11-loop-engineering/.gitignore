@@ -1,0 +1,6 @@
+# Secrets never travel with Git — the bearer token lives here (A2/A6)
+.env
+
+# Python noise
+__pycache__/
+*.pyc

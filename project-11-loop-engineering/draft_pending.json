@@ -1,0 +1,43 @@
+{
+  "project": "Project 11 - Two-Routine Gate System",
+  "created_by": "routine_a_draft.py (one-off manual invoke)",
+  "created_at": "2026-08-26T16:08:59+00:00",
+  "status": "EXECUTED",
+  "note": "Nothing here has been executed. This file is a PROPOSAL. Routine B refuses to act unless its status is exactly 'PENDING APPROVAL' AND a human fires the API call.",
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Summarize weekly metrics report",
+      "action": "generate_summary"
+    },
+    {
+      "id": 2,
+      "title": "Rename legacy config keys",
+      "action": "batch_rename"
+    },
+    {
+      "id": 3,
+      "title": "Send recap email to team list",
+      "action": "notify"
+    }
+  ],
+  "approved_by": "HUMAN (manual API call)",
+  "executed_at": "2026-08-26T16:09:10+00:00",
+  "results": [
+    {
+      "id": 1,
+      "title": "Summarize weekly metrics report",
+      "result": "done"
+    },
+    {
+      "id": 2,
+      "title": "Rename legacy config keys",
+      "result": "done"
+    },
+    {
+      "id": 3,
+      "title": "Send recap email to team list",
+      "result": "done"
+    }
+  ]
+}
