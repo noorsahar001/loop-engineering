@@ -1,0 +1,9 @@
+# Calm fixture log — project-7 style (dialect 1).
+# Deliberately contains NO repeated failures: this is the "RUN 1" case.
+2026-08-25 01:05:00,101 - INFO - === BEAT STARTED ===
+2026-08-25 01:05:00,101 - INFO - Reading progress.md
+2026-08-25 01:05:00,102 - INFO - progress.md read successfully
+2026-08-25 01:05:00,200 - INFO - gather.py completed successfully
+2026-08-25 01:05:00,200 - INFO - Comparing old vs new findings
+2026-08-25 01:05:00,201 - INFO - Found 3 new finding(s), updating spine
+2026-08-25 01:05:00,202 - INFO - === BEAT COMPLETED SUCCESSFULLY ===

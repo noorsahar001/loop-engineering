@@ -1,0 +1,19 @@
+# Planted fixture log — project-7 style (dialect 1).
+# Contains a DELIBERATELY REPEATED failure: "NEEDS HUMAN" x3.
+# This is the "RUN 2" case -> the loop must propose a PR with evidence.
+2026-08-26 02:00:00,111 - INFO - === BEAT STARTED ===
+2026-08-26 02:00:00,112 - INFO - Reading progress.md
+2026-08-26 02:00:00,112 - INFO - progress.md read successfully
+2026-08-26 02:00:00,190 - INFO - Running gather.py
+2026-08-26 02:00:00,191 - ERROR - FAILURE: gather.py crashed with return code 1
+2026-08-26 02:00:00,191 - ERROR - NEEDS HUMAN: gather.py crashed during data collection
+2026-08-26 02:01:00,333 - INFO - === BEAT STARTED ===
+2026-08-26 02:01:00,334 - INFO - Reading progress.md
+2026-08-26 02:01:00,335 - INFO - Running gather.py
+2026-08-26 02:01:00,336 - ERROR - FAILURE: gather.py crashed with return code 1
+2026-08-26 02:01:00,336 - ERROR - NEEDS HUMAN: gather.py is crashing repeatedly
+2026-08-26 02:02:00,555 - INFO - === BEAT STARTED ===
+2026-08-26 02:02:00,556 - INFO - Reading progress.md
+2026-08-26 02:02:00,557 - INFO - Running gather.py
+2026-08-26 02:02:00,558 - ERROR - FAILURE: gather.py timed out after 30 seconds
+2026-08-26 02:02:00,558 - ERROR - NEEDS HUMAN: gather.py hung or is too slow

@@ -1,0 +1,13 @@
+# Calm fixture log — project-8 style (dialect 2).
+# Deliberately contains NO repeated failures: this is the "RUN 1" case.
+[2026-08-25 01:00:01] === BEAT STARTED: todo-audit ===
+[2026-08-25 01:00:01] Reading audit_progress.md (spine)
+[2026-08-25 01:00:01] Checking budget guards
+[2026-08-25 01:00:02] Creating isolated worktree
+[2026-08-25 01:00:02] Worktree created successfully
+[2026-08-25 01:00:03] Running audit script (maker)
+[2026-08-25 01:00:03] Audit completed, findings: 12 lines
+[2026-08-25 01:00:04] Running review script (checker)
+[2026-08-25 01:00:04] REVIEW PASSED
+[2026-08-25 01:00:04] Updating spine (audit_progress.md)
+[2026-08-25 01:00:05] === BEAT COMPLETED SUCCESSFULLY ===
