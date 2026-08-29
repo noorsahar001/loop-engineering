@@ -33,6 +33,7 @@ push and merge.
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 from datetime import datetime
@@ -86,15 +87,15 @@ def run_git(args, cwd=REPO_ROOT):
         cwd=cwd,
         capture_output=True,
         text=True,
+        encoding="utf-8",
+        errors="replace",
     )
     return proc.returncode, (proc.stdout or "") + (proc.stderr or "")
 
 
 def has_gh():
     """True if the GitHub CLI is available on PATH."""
-    return subprocess.run(
-        ["gh", "--version"], capture_output=True, text=True
-    ).returncode == 0
+    return shutil.which("gh") is not None
 
 
 def read_state():
@@ -309,16 +310,25 @@ def commit_rule_change(proposal, branch):
         )
 
     # Only touch rules.md on the dedicated branch — never on main.
-    run_git(["checkout", "-b", branch])
+    checkout_rc, checkout_out = run_git(["checkout", "-b", branch])
+    if checkout_rc != 0:
+        # Could not create the feature branch; do NOT touch main.
+        return checkout_rc, "could not create branch {0}: {1}".format(
+            branch, checkout_out.strip()
+        )
     try:
         with open(RULES_PATH, "w", encoding="utf-8") as fh:
             fh.write(proposed_rules)
-        run_git(["add", "rules.md", proposal_doc])
+        # Git paths are relative to the repo root (same as RULES_PATH IS).
+        run_git(["add", RULES_PATH, proposal_doc])
         rc, out = run_git(["commit", "-m", proposal["title"]])
         return rc, out
     finally:
-        # Return to main regardless of commit success.
+        # Return to main regardless of commit success, and drop any
+        # working-tree residue so main stays untouched (the proposal
+        # lives only on its feature branch).
         run_git(["checkout", "main"])
+        run_git(["checkout", "--", RULES_PATH])
 
 
 def open_or_save_pr(proposal, branch):
@@ -342,6 +352,7 @@ def open_or_save_pr(proposal, branch):
 
     # Fallback: capture the diff so a human can open the PR manually.
     rc, diff = run_git(["diff", "main..." + branch])
+    os.makedirs(PROPOSAL_DIR, exist_ok=True)
     diff_path = os.path.join(PROPOSAL_DIR, "proposal.diff")
     with open(diff_path, "w", encoding="utf-8") as fh:
         fh.write(diff or "")
@@ -358,7 +369,7 @@ def main(argv=None):
     it = iter(argv)
     for arg in it:
         if arg == "--logs":
-            log_paths = [next(it)]
+            log_paths.append(next(it))
         elif arg == "--threshold":
             threshold = int(next(it))
 
@@ -423,7 +434,17 @@ def main(argv=None):
                 print("COMMIT FAILED on branch {0}: {1}".format(branch, commit_out))
             continue
 
-        pr_result = open_or_save_pr(proposal, branch)
+        try:
+            pr_result = open_or_save_pr(proposal, branch)
+        except Exception as exc:  # noqa: BLE001 - never let the loop crash
+            if not quiet:
+                print(
+                    "PR STEP FAILED (change stays on branch {0}): {1}".format(
+                        branch, exc
+                    )
+                )
+            continue
+
         state["proposals"].append(proposal["signature"])
         proposal_made = proposal
         break  # one proposal per beat is enough; keep it reviewable
